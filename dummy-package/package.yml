@@ -1,3 +1,11 @@
 matches:
   - trigger: ":hello"
     replace: "github"
+
+  - regex: "=sum\\((?P<num1>.*?),(?P<num2>.*?)\\)"
+    replace: "{{result}}"
+    vars:
+      - name: result
+        type: shell
+        params:
+          cmd: "expr $ESPANSO_NUM1 + $ESPANSO_NUM2"
